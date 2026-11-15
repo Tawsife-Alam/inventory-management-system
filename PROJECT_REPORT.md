@@ -203,31 +203,6 @@ The application underwent rigorous verification with the following results:
 | **Delete Product** | Click "Delete" and accept confirmation | Row removed from database; table re-renders; cards decrement | **PASS** |
 | **SQL Injection Test** | Input `' OR '1'='1` in inputs | Handled as plain text; database remains secure | **PASS** |
 
----
-
-## 6. Viva / Lab Evaluation Q&A Preparation
-
-### Q1: Why did you choose JDBC instead of an ORM like Hibernate?
-> **Answer:** JDBC is the core low-level API provided by Java for database communication. For this project, JDBC gives us direct control over raw SQL execution, allows explicit understanding of connections, transactions, and statements, and eliminates the overhead and complex configuration of heavy ORM frameworks.
-
-### Q2: What is the purpose of `Class.forName("com.mysql.cj.jdbc.Driver")`?
-> **Answer:** It dynamically loads and registers the MySQL JDBC Driver class into Java's `DriverManager` memory at runtime so the application can locate and communicate with MySQL.
-
-### Q3: Why is `PreparedStatement` preferred over standard `Statement`?
-> **Answer:**
-> 1. **Security:** `PreparedStatement` prevents SQL Injection by pre-compiling the SQL statement and sanitizing input parameters.
-> 2. **Performance:** The database compiles the SQL statement once, caching the execution plan for repeated queries with varying parameters.
-
-### Q4: Why did you use `LEFT JOIN` instead of `INNER JOIN` in the product queries?
-> **Answer:** If a product does not have an assigned category or supplier (e.g. if a category was deleted and the foreign key became `NULL`), an `INNER JOIN` would completely hide that product from the list. A `LEFT JOIN` ensures all products are displayed even if their category or supplier is `NULL`.
-
-### Q5: What does `COALESCE(SUM(quantity), 0)` do?
-> **Answer:** If a table contains no matching rows, the SQL `SUM()` function evaluates to `NULL`. `COALESCE()` returns the first non-null argument in its list, converting `NULL` into `0` to prevent `NullPointerException` or formatting issues in the backend.
-
-### Q6: How does the application update without refreshing the browser page?
-> **Answer:** The frontend uses the JavaScript `Fetch API` to send asynchronous HTTP requests (`GET`, `POST`, `DELETE`) to the Java Servlets in the background. The Servlets return lightweight JSON responses, and JavaScript dynamically updates the Document Object Model (DOM) table rows and summary text.
-
----
 
 ## 7. Conclusion
 
