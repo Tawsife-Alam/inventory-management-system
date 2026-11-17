@@ -1,6 +1,4 @@
-// =======================================================
-// INVENTORY MANAGEMENT SYSTEM - FRONTEND SCRIPT (app.js)
-// =======================================================
+
 
 let currentProducts = [];
 
