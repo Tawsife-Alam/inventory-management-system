@@ -1,7 +1,4 @@
--- =======================================================
--- UNIVERSITY CSE DBMS LAB PROJECT
--- INVENTORY MANAGEMENT SYSTEM - COMPLETE DATABASE SETUP
--- =======================================================
+
 
 -- Step 1: Create Database
 CREATE DATABASE IF NOT EXISTS inventory_management;
